@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = "http://localhost:4000";
+const API_BASE = process.env.REACT_APP_SERVER_API_URL;
 const TUITS_API = `${API_BASE}/api/user`;
 const TRIPS_API = `${API_BASE}/api/trip`;
 const BOOKING_API = `${API_BASE}/api/bookings`;
@@ -100,16 +100,25 @@ export const addBooking = async (data) => {
 
 export const addBucketList = async (data) => {
     data = data || '';
+    console.log(data);
     const response = await axios.post(`${BUCKET_LIST_API}/addBucketListItem`,data);
     const item = response;
     console.log("chetana",item);
     return item;
 }
 
+// export const findMyBookings = async (data) => {
+//     data = data || '';
+//     console.log("user id",data);
+//     const response = await axios.post(`${BOOKING_API}/findBookingsByUserId`,data);
+//     const trip = response;
+//     return trip;
+// }
+
 export const findMyBookings = async (data) => {
     data = data || '';
     console.log("user id",data);
-    const response = await axios.post(`${BOOKING_API}/findBookingsByUserId`,data);
+    const response = await axios.get(`${BOOKING_API}/findBookingsByUserId/${data}`);
     const trip = response;
     return trip;
 }
@@ -117,6 +126,32 @@ export const findMyBookings = async (data) => {
 export const getCityDetailsByPlaceId = async (place_id) => {
     console.log("place id",place_id);
     const response = await axios.get(`${CITY_API}/getCityDetailsByPlaceId/${place_id}`);
+    console.log(response.data);
+    if(response.data.status == 404) {
+        const cityDetails = {
+            city_name: {
+                city: "",
+                country: ""
+            },
+            geolocation: {
+                latitude: "",
+                longitude: ""
+            },
+            place_id: "",
+            place_description: "",
+            best_time_to_visit: [],
+            places_to_see: [],
+            places_to_eat: []
+        }
+        return cityDetails;
+    } else {
+        return response.data.message;
+    }
+}
+
+export const getBucketListItems = async (data) => {
+    data = data || '';
+    const response = await axios.get(`${BUCKET_LIST_API}/getBucketListForUser/${data}`);
     const trip = response;
     return trip;
 }
@@ -125,6 +160,21 @@ export const getCityDetailsByPlaceId = async (place_id) => {
 export const getPhotos = async (place_id) => {
     const response = await axios
         .get(`${TUITS_API}/getPhotos/${place_id}`);
+    console.log(response);
+    return response.data;
+}
+
+export const getExperiences = async () => {
+    const response = await axios
+        .get(`${TUITS_API}/getUserExperience`);
+    console.log(response);
+    return response.data;
+}
+
+export const getExperiencesByUserId = async (userId) => {
+    const data =  { userId: userId};
+    const response = await axios
+        .post(`${TUITS_API}/getUserExperiencebyUserId`, data);
     console.log(response);
     return response.data;
 }
