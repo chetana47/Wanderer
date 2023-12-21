@@ -10,7 +10,6 @@ import { configureStore }
     from '@reduxjs/toolkit';
 import {Provider} from "react-redux";
 import profileReducer from "./Profile/profile-reducer";
-import HomeExp from "./Experiences/index";
 import DetailExp from "./Experience-Detail";
 import GlobalCities from "./HomeComponent";
 import CitySuggest from "./CitySuggestions";

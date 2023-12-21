@@ -30,11 +30,11 @@ const DetailExpOfUser = () => {
                 <h3>Experiences</h3>
             </li>
             {
-                experiencedetails.map(experience =>
+                experiencedetails?experiencedetails.map(experience =>
                                     <DetailExperience
                                         key={experience._id}
                                         detailExperience={experience}/>
-                )
+                ):""
             }
         </ul>
     );

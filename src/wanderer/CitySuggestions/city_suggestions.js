@@ -11,7 +11,7 @@ const CitySuggestion = ({
                                 _id: 123,
                                 placeID: "ChIJOwg_06VPwokRYv534QaPC8g",
                                 imageURL:
-                                    "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=AUjq9jne4pWM2oSP_1iOUNQFJMqI7jjWtbJTNG3kAcQV2rtYXj7hgEqxIkAG5mVeZ3uKFgCDOEYZDQDUEyOrmfviuqOEeMNQniuhkP4bTS0UGQySpFYzDKJbj_Af9TGmtvI15kje0fkyhnICICnxN4QAzsufY2HMzMtobHdF9AxgeLPc_mL2&key=AIzaSyDD0GxnUVXCqw-diJgj35DY_uOOVb8HJBE",
+                                    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nationalgeographic.com%2Ftravel%2Fdestination%2Fnew-york-city&psig=AOvVaw2jVwCcgs8fM54vzW5XtpMo&ust=1702343076844000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIiT7KyYhoMDFQAAAAAdAAAAABAD",
                                 cityName: "New York",
                             },
                         }) => {
