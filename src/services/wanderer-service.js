@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = process.env.REACT_APP_SERVER_API_URL;
+const API_BASE = process.env.REACT_APP_SERVER_API_URL || "https://wanderer-backend-service.onrender.com/";
 const TUITS_API = `${API_BASE}/api/user`;
 const TRIPS_API = `${API_BASE}/api/trip`;
 const BOOKING_API = `${API_BASE}/api/bookings`;
